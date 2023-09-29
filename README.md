@@ -5,9 +5,9 @@ Note: all development is done on vk-video branch.
 
 # Task List
 Based on [NewPipe docs](https://teamnewpipe.github.io/documentation/03_Implement_a_service)
-- [ ] Head of Service
-    - [ ] StreamingService
-    - [ ] ServiceInfo
+- [X] Head of Service
+    - [X] StreamingService
+    - [X] ServiceInfo
 - [ ] Stream
     - [ ] StreamExtractor
     - [ ] StreamInfoItemExtractor
