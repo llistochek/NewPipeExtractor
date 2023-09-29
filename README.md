@@ -1,6 +1,6 @@
 # Vk Video support for NewPipe Extractor
-This fork aims to add support for Vk Video in NewPipe.
-For contributing, see [CONTRIBUTING.md](CONTRIBUTING.md)
+This fork aims to add support for Vk Video in NewPipe.\
+For contributing, see [CONTRIBUTING.md](CONTRIBUTING.md)\
 Note: all development is done on vk-video branch.
 
 # Task List
