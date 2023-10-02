@@ -6,30 +6,40 @@ import org.schabi.newpipe.extractor.channel.tabs.ChannelTabExtractor;
 import org.schabi.newpipe.extractor.comments.CommentsExtractor;
 import org.schabi.newpipe.extractor.exceptions.ExtractionException;
 import org.schabi.newpipe.extractor.kiosk.KioskList;
-import org.schabi.newpipe.extractor.linkhandler.*;
+import org.schabi.newpipe.extractor.linkhandler.LinkHandler;
+import org.schabi.newpipe.extractor.linkhandler.LinkHandlerFactory;
+import org.schabi.newpipe.extractor.linkhandler.ListLinkHandler;
+import org.schabi.newpipe.extractor.linkhandler.ListLinkHandlerFactory;
+import org.schabi.newpipe.extractor.linkhandler.SearchQueryHandler;
+import org.schabi.newpipe.extractor.linkhandler.SearchQueryHandlerFactory;
 import org.schabi.newpipe.extractor.playlist.PlaylistExtractor;
 import org.schabi.newpipe.extractor.search.SearchExtractor;
+import org.schabi.newpipe.extractor.services.vkvideo.extractors.VkVideoStreamExtractor;
+import org.schabi.newpipe.extractor.services.vkvideo.linkHandler.VkVideoStreamLinkHandlerFactory;
 import org.schabi.newpipe.extractor.stream.StreamExtractor;
 import org.schabi.newpipe.extractor.subscription.SubscriptionExtractor;
 import org.schabi.newpipe.extractor.suggestion.SuggestionExtractor;
 
-import java.util.List;
-
 import static java.util.Arrays.asList;
-import static org.schabi.newpipe.extractor.StreamingService.ServiceInfo.MediaCapability.*;
+import static org.schabi.newpipe.extractor.StreamingService.ServiceInfo.MediaCapability.AUDIO;
+import static org.schabi.newpipe.extractor.StreamingService.ServiceInfo.MediaCapability.COMMENTS;
+import static org.schabi.newpipe.extractor.StreamingService.ServiceInfo.MediaCapability.LIVE;
+import static org.schabi.newpipe.extractor.StreamingService.ServiceInfo.MediaCapability.VIDEO;
 
 
 public class VkVideoService extends StreamingService {
-    public VkVideoService(int id, String name, List<ServiceInfo.MediaCapability> capabilities) {
+    public VkVideoService(final int id) {
         super(id, "Vk Video", asList(VIDEO, COMMENTS, LIVE, AUDIO));
     }
 
     @Override
-    public String getBaseUrl() { return "https://vk.com/video"; }
+    public String getBaseUrl() {
+        return "https://vk.com/video";
+    }
 
     @Override
     public LinkHandlerFactory getStreamLHFactory() {
-        return null;
+        return new VkVideoStreamLinkHandlerFactory();
     }
 
     @Override
@@ -58,7 +68,7 @@ public class VkVideoService extends StreamingService {
     }
 
     @Override
-    public SearchExtractor getSearchExtractor(SearchQueryHandler queryHandler) {
+    public SearchExtractor getSearchExtractor(final SearchQueryHandler queryHandler) {
         return null;
     }
 
@@ -78,27 +88,32 @@ public class VkVideoService extends StreamingService {
     }
 
     @Override
-    public ChannelExtractor getChannelExtractor(ListLinkHandler linkHandler) throws ExtractionException {
+    public ChannelExtractor getChannelExtractor(final ListLinkHandler linkHandler)
+            throws ExtractionException {
         return null;
     }
 
     @Override
-    public ChannelTabExtractor getChannelTabExtractor(ListLinkHandler linkHandler) throws ExtractionException {
+    public ChannelTabExtractor getChannelTabExtractor(final ListLinkHandler linkHandler)
+            throws ExtractionException {
         return null;
     }
 
     @Override
-    public PlaylistExtractor getPlaylistExtractor(ListLinkHandler linkHandler) throws ExtractionException {
+    public PlaylistExtractor getPlaylistExtractor(final ListLinkHandler linkHandler)
+            throws ExtractionException {
         return null;
     }
 
     @Override
-    public StreamExtractor getStreamExtractor(LinkHandler linkHandler) throws ExtractionException {
-        return null;
+    public StreamExtractor getStreamExtractor(final LinkHandler linkHandler)
+            throws ExtractionException {
+        return new VkVideoStreamExtractor(this, linkHandler);
     }
 
     @Override
-    public CommentsExtractor getCommentsExtractor(ListLinkHandler linkHandler) throws ExtractionException {
+    public CommentsExtractor getCommentsExtractor(final ListLinkHandler linkHandler)
+            throws ExtractionException {
         return null;
     }
 }
