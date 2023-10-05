@@ -9,9 +9,9 @@ Based on [NewPipe docs](https://teamnewpipe.github.io/documentation/03_Implement
     - [X] StreamingService
     - [X] ServiceInfo
 - [ ] Stream
-    - [ ] StreamExtractor
+    - [X] StreamExtractor
     - [ ] StreamInfoItemExtractor
-    - [ ] LinkHandlerFactory
+    - [X] LinkHandlerFactory
 - [ ] Search
     - [ ] SearchExtractor
     - [ ] SearchQueryHandlerFactory
